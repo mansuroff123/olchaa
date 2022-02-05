@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<div class="container py-4">
+			<div class="row">
+                <div class="col-6 offset-3">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                          Login
+                        </div>
+                        <div class="card-body">
+                            <form class="form-example mt-3" action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="username" class="text-02">Username</label>
+                                    {{ form.username|as_crispy_field }}
+                                </div>
+                                <div class="form-group m-0 p-0 d-flex justify-between " id="texts">
+                                    <div class="col-6 p-0"><label for="password" class="text-02">Password</label></div>
+                                    <div></div>
+                                    <div class="col-6 p-0 d-flex justify-content-end"><a href="{% url 'forgot_password' %}" class="forgot_password">Parolni tiklash</a></div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password|as_crispy_field }}
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <button type="submit" class="btn btn-success px-4 px-sm-5 py-2 rounded-15 mr-2">Kirish</button>
+                                    <a href="{% url 'registration' %}" class="d-block">Ro'yxatdan o'tish</a>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                </div>
+            </div>
+	</div>
+{% endblock %}
